@@ -1,0 +1,43 @@
+<!ELEMENT book (dedication?, preface, part+, authornotes?)>
+<!ATTLIST book
+	edition CDATA ""
+>
+<!ELEMENT dedication (#PCDATA)>
+<!ELEMENT preface (#PCDATA)>
+<!ELEMENT part (toc, chapter+, lof?, lot?)>
+<!ATTLIST part
+	id ID #REQUIRED
+	title CDATA ""
+>
+<!ELEMENT toc (item+)>
+<!ELEMENT lof (item+)>
+<!ELEMENT lot (item+)>
+<!ELEMENT item (#PCDATA)>
+<!ATTLIST item
+	id IDREF #REQUIRED
+>
+<!ELEMENT chapter (section+)>
+<!ATTLIST chapter
+	id ID #REQUIRED
+	title CDATA #REQUIRED
+>
+<!ELEMENT section (#PCDATA|section|figure|table)*>
+<!ATTLIST section
+	id ID #REQUIRED
+	title CDATA #REQUIRED
+>
+<!ELEMENT figure EMPTY>
+<!ATTLIST figure
+	id ID #REQUIRED
+	caption CDATA #REQUIRED
+	path CDATA "placeholder.jpg"
+>
+<!ELEMENT table (row+)>
+<!ATTLIST table
+	id ID #REQUIRED
+	caption CDATA #REQUIRED
+>
+<!ELEMENT row (cell+)>
+<!ELEMENT cell (#PCDATA)>
+<!ELEMENT authornotes (note+)>
+<!ELEMENT note (#PCDATA)>
